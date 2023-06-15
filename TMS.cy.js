@@ -83,7 +83,7 @@ it('check full signIn panel with valid credential ok',()=>{
   cy.get('.btn-block.btn.btn-primary').scrollIntoView().click({force:true});
 
   //check weather invalid mail and password can handle
-  // Check the current URL
+  
 cy.url().should('eq', 'https://tmsv2.aamarpay.dev/profile');
 
 
