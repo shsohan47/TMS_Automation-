@@ -8,7 +8,7 @@
 context('Actions', () => {
   beforeEach(() => {
     cy.visit('https://tmsv2.aamarpay.dev/login');
-    //Login in every iteration
+
   })
   it('check full signIn panel With Invalid credential ok',()=>{
   //Enter a invalid value
