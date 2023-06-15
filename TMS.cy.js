@@ -20,7 +20,7 @@ context('Actions', () => {
   .type('{leftarrow}{rightarrow}{uparrow}{downarrow}')
   .type('{del}{selectall}{backspace}')
 
-  // .type() with key modifiers
+
   .type('{alt}{option}') //these are equivalent
   .type('{ctrl}{control}') //these are equivalent
   .type('{meta}{command}{cmd}') //these are equivalent
