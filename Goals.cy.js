@@ -49,12 +49,16 @@ context('Actions', () => {
 
         cy.contains('Goals').scrollIntoView().should('contain','Goals').click({force:true});
         cy.contains("Add Goals").scrollIntoView().click({force:true});
-        cy.get('.MuiInputBase-input.MuiOutlinedInput-input.MuiInputBase-inputSizeSmall.MuiInputBase-inputAdornedEnd.MuiAutocomplete-input.MuiAutocomplete-inputFocused.css-b52kj1')
-        .eq(0)
-        .click({ force: true }).clear()
-        .type("dummy department");
 
-        cy.xpath("//li[@id='controllable-option-0']").click({ force: true });
+        //this autocomplete is removed from main panel
+        // cy.get('.MuiInputBase-input.MuiOutlinedInput-input.MuiInputBase-inputSizeSmall.MuiInputBase-inputAdornedEnd.MuiAutocomplete-input.MuiAutocomplete-inputFocused.css-b52kj1')
+        // .eq(0)
+        // .click({ force: true }).clear()
+        // .type("dummy department");
+        // cy.xpath("//li[@id='controllable-option-0']").click({ force: true });
+
+
+        
         cy.get('input[name="title"]').type('P and E TMS GOAL',{delay:100});
         cy.get('textarea[name="description"]').type('TMS description',{delay:100});
         //first try invalid year
