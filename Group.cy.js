@@ -122,7 +122,7 @@ context('Actions', () => {
     //cy.get('.table-row:even').should('not.have.class', 'selected')
   })
 
-  it.only('should clear all selection', () => {
+  it('should clear all selection', () => {
     // Select some rows manually (e.g., by clicking on them)
     cy.wait(1000);
     cy.get('table:nth-child(1)')
