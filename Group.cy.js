@@ -144,6 +144,40 @@ context('Actions', () => {
     cy.get('.table-row.selected').should('not.exist')
   })
 
+it.only('create a group and remove it',()=>
+{
+  cy.get("input[name='title']").type("Automation demo Group",{force:true,delay:100});
+  cy.get('table:nth-child(1)')
+  .find('td')
+  .first()
+  .get('.ant-checkbox-input')
+  .first()
+  .scrollIntoView().click({force:true})
+
+  cy.get('.btn.btn-primary.mb-3').scrollIntoView().click({force:true});
+  cy.get('.custom-scrollbar.light-only.ltr.swal2-shown.swal2-height-auto').should('exist');
+  cy.wait(5000);
+  cy.get('.status_toggle.middle').click({force:true});
+  cy.get('[href="/groups"]').scrollIntoView().click({force:true});
+ //delete the specific td value
+ // Delete a specific table row based on group name
+cy.get('table') // Replace 'table' with your specific table selector
+.contains('td', 'Automation demo Group') // Find the <td> element with the specified group name
+.parent('tr') // Select the parent <tr> element
+.within(() => {
+  cy.get('td:last-child') // Select the last <td> element within the row
+    .find('.m-r-5.btn-danger.m-b-10') // Replace 'button.delete-button' with your delete button selector
+    .click(); // Click the delete button
+    
+});
+cy.contains('Delete!').click({force:true});
+    cy.get('table') // Replace 'table' with your specific table selector
+.contains('td', 'Automation demo Group').should('not.exist')
+
+
+
+
+})
 
 
 
