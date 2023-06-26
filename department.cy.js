@@ -109,9 +109,9 @@ cy.wait(3000);
 
 
 //Add Member
-it.only("check Add Member Panel Ok",()=>
+it("check Add Member Panel Ok",()=>
 {
-  cy.wait(2000  )
+  cy.wait(2000)
   cy.get('body > div:nth-child(2) > div:nth-child(1) > div:nth-child(3) > div:nth-child(2) > header:nth-child(2) > nav:nth-child(2) > div:nth-child(1) > div:nth-child(2) > ul:nth-child(1) > li:nth-child(4) > a:nth-child(1) > span:nth-child(2)').click({force:true});
   cy.contains('Add Department Member').scrollIntoView().click({force:true})
   // cy.get('.MuiInputBase-root.MuiOutlinedInput-root.MuiInputBase-colorPrimary.MuiInputBase-fullWidth.MuiInputBase-formControl.MuiInputBase-sizeSmall.MuiInputBase-adornedEnd.MuiAutocomplete-inputRoot.css-1mxnqnm').eq(0).each(($option)=>{
@@ -147,6 +147,7 @@ cy.get('.MuiInputBase-root.MuiOutlinedInput-root.MuiInputBase-colorPrimary.MuiIn
   // });
   cy.get('.align-center.btn.btn-primary').scrollIntoView().click({force:true});
   cy.contains('department member with this Member already exists.').scrollIntoView().should('be.visible');
+  cy.contains('OK').click();
 })
 
 
@@ -178,22 +179,29 @@ it('should validate table rows and edit designation panel', () => {
       .within(() => {
         // Check for Edit button
         cy.get('.m-r-5.btn-success.m-b-10').should('exist');
-        cy.get('.m-r-5.btn-success.m-b-10').scrollIntoView().click({force:true});
+        //cy.get('.m-r-5.btn-success.m-b-10').scrollIntoView().click({});
         
         cy.get('.m-r-5.btn-success.m-b-10').click({force:true});
+        //cy.contains('Cancel').click({force:true});
+        
 
 
 
         // Check for Delete button
         cy.get('.m-r-5.btn-success.m-b-10').should('exist');
       });
+      cy.contains('Cancel', { timeout: 5000 }).should('be.visible');
+
+    // Click the "Cancel" button
+    cy.contains('Cancel', { timeout: 5000 }).click({ force: true });
   });
 });
 
 
 //Add designation
 it("check Add designation", () => {
-  cy.contains('Add Designation').scrollIntoView().click({ force: true });
+  cy.get('body > div:nth-child(2) > div:nth-child(1) > div:nth-child(3) > div:nth-child(2) > header:nth-child(2) > nav:nth-child(2) > div:nth-child(1) > div:nth-child(2) > ul:nth-child(1) > li:nth-child(4) > a:nth-child(1) > span:nth-child(2)').click({force:true});
+  cy.contains('Add Department Designation').scrollIntoView().click({ force: true });
 
   cy.get('.MuiInputBase-input.MuiOutlinedInput-input.MuiInputBase-inputSizeSmall.MuiInputBase-inputAdornedEnd.MuiAutocomplete-input.MuiAutocomplete-inputFocused.css-b52kj1')
     .eq(0)
