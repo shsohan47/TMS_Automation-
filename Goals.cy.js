@@ -59,7 +59,7 @@ context('Actions', () => {
 
 
         
-        cy.get('input[name="title"]').type('P and E TMS GOAL',{delay:100});
+        cy.get('input[name="title"]').eq(0).type('P and E TMS GOAL',{delay:100});
         cy.get('textarea[name="description"]').type('TMS description',{delay:100});
         //first try invalid year
         cy.get('input[name="year"]').type('2010');
@@ -82,7 +82,7 @@ context('Actions', () => {
         cy.get('body > div:nth-child(2) > div:nth-child(1) > div:nth-child(3) > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > select:nth-child(2)')
         .eq(0).select('4',{force:true});
         cy.get('body > div:nth-child(2) > div:nth-child(1) > div:nth-child(3) > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > select:nth-child(2)')
-        .eq(0).select('dummy department',{force:true});
+        .eq(0).select('P&E',{force:true});
         cy.get('table', { timeout: 10000 })
     .find('tbody>tr>td:nth-child(7)')
      .find('button').eq(3).click({force:true});
