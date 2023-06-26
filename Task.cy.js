@@ -35,9 +35,28 @@ context('Actions', () => {
     //check weather invalid mail and password can handle
     // Check the current URL
   cy.url().should('eq', 'https://tmsv2.aamarpay.dev/profile');
-  cy.contains("Groups").scrollIntoView().click({force:true});
-            cy.contains("Add Groups").scrollIntoView().click({force:true});
+  cy.wait(3000);
+  cy.contains('Task').scrollIntoView().click({force:true});
+  cy.contains('Tasks').scrollIntoView().click({force:true});
             cy.get('.status_toggle.middle').click({force:true});
     })
+
+
+    //test 1
+    it('checking a task all componenents ', () => {
+        
+        cy.get('table') // Replace 'table' with your specific table selector
+.contains('td', 'Refund API') // Find the <td> element with the specified group name
+.parent('tr') // Select the parent <tr> element
+.within(() => {
+  cy.get('td:last-child').find('svg') // Select the last <td> element within the row
+    .click({force:true}); // Click the delete button
     
+});
+cy.wait(2000);
+cy.contains('Edit').click();
+
+})
+    
+      
 })
