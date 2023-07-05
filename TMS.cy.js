@@ -42,7 +42,7 @@ context('Actions', () => {
   cy.get('.btn-block.btn.btn-primary').scrollIntoView().click({force:true});
 
   //check weather invalid mail and password can hendle
-  cy.get('.ant-notification-notice.ant-notification-notice-error.css-k7429z.ant-notification-notice-closable').should('be.visible',{force:true});
+  cy.get('.ant-notification.ant-notification-topRight.css-12jzuas').should('be.visible',{force:true});
 
 
 })
