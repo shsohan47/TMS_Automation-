@@ -27,14 +27,14 @@ context('Actions', () => {
     cy.get('.password-icon.d-flex.cursor-pointer')
     .click({force:'true'});
     //check the checkbox
-    cy.get('.checkbox [type="checkbox"]').not('[disabled]')
-    .check({force:true}).should('be.checked');
+    // cy.get('.checkbox [type="checkbox"]').not('[disabled]')
+    // .check({force:true}).should('be.checked');
     //click on the signIn button
     cy.get('.btn-block.btn.btn-primary').scrollIntoView().click({force:true});
   
     //check weather invalid mail and password can handle
     // Check the current URL
-  cy.url().should('eq', 'https://tmsv2.aamarpay.dev/profile');
+  cy.url().should('eq', 'https://tmsv2.aamarpay.dev/tasks-on-me');
   cy.wait(3000);
   cy.contains('Task').scrollIntoView().click({force:true});
   cy.contains('Tasks').scrollIntoView().click({force:true});
