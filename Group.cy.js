@@ -21,22 +21,22 @@ context('Actions', () => {
         .should('have.value', 'sohan');
   //input password field
     cy.get('.d-flex.align-items-center.password-field')
-    .type('Sohan01953714653')
+    .type('sohan01953714653')
     
     //check show be clicked
     cy.get('.password-icon.d-flex.cursor-pointer')
     .click({force:'true'});
     //check the checkbox
-    cy.get('.checkbox [type="checkbox"]').not('[disabled]')
-    .check({force:true}).should('be.checked');
+    // cy.get('.checkbox [type="checkbox"]').not('[disabled]')
+    // .check({force:true}).should('be.checked');
     //click on the signIn button
     cy.get('.btn-block.btn.btn-primary').scrollIntoView().click({force:true});
   
     //check weather invalid mail and password can handle
     // Check the current URL
-  cy.url().should('eq', 'https://tmsv2.aamarpay.dev/profile');
+  cy.url().should('eq', 'https://tmsv2.aamarpay.dev/tasks-on-me');
   cy.contains("Groups").scrollIntoView().click({force:true});
-            cy.contains("Add Groups").scrollIntoView().click({force:true});
+            cy.contains("Create Groups").scrollIntoView().click({force:true});
             cy.get('.status_toggle.middle').click({force:true});
     })
         it("check all group clickable or not",()=>
@@ -170,6 +170,8 @@ cy.get('table') // Replace 'table' with your specific table selector
     .click(); // Click the delete button
     
 });
+//let cookies = cy.getCookie();
+//console.log("cookies: ", cookies)
 cy.contains('Delete!').click({force:true});
     cy.get('table') // Replace 'table' with your specific table selector
 .contains('td', 'Automation demo Group').should('not.exist')

@@ -1,5 +1,5 @@
 context('Actions', () => {
-    beforeEach(() => {
+    before(() => {
       cy.visit('https://tmsv2.aamarpay.dev/login');
       //Login in every iteration
   
@@ -36,27 +36,28 @@ context('Actions', () => {
     // Check the current URL
   cy.url().should('eq', 'https://tmsv2.aamarpay.dev/tasks-on-me');
   cy.wait(3000);
-  cy.contains('Task').scrollIntoView().click({force:true});
-  cy.contains('Tasks').scrollIntoView().click({force:true});
-            cy.get('.status_toggle.middle').click({force:true});
+    })
+    it.only("Created a Task succesfully",function()
+    {
+        cy.contains("Create Task").click({force:true});
+        cy.wait(3000);
+        //type title
+        cy.get("input[name='title']").type("A task that assign me");
+        //select status
+        cy.get("input[value='URG']").click({force:true})
+        //select date
+        cy.get("input[placeholder='Select date']")
+        .click()
+        .type("2023-12-31 11:59 PM")
+        .get("button[class='ant-btn css-1fl56fv ant-btn-primary ant-btn-sm'] span")
+        .click({force:true})
+        //typing description
+        cy.get("#message-text").type("Demo description")
+        //click on self assign 
+        cy.get("body div[id='root'] div[class='App'] div[id='pageWrapper'] div[class='page-body-wrapper horizontal-menu'] div div[class='page-body fadeIn-enter-done'] div[class='py-2 px-2'] div form label:nth-child(1) span:nth-child(1) input:nth-child(1)").click({force:true})
+        cy.get(".MuiButtonBase-root.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.MuiButton-textSizeMedium.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.MuiButton-textSizeMedium.jss56.jss57.css-eq9yqd").click();
+        cy.contains("ok").click({force:true})
+        
     })
 
-
-    //test 1
-    it('checking a task all componenents ', () => {
-        
-        cy.get('table') // Replace 'table' with your specific table selector
-.contains('td', 'Refund API') // Find the <td> element with the specified group name
-.parent('tr') // Select the parent <tr> element
-.within(() => {
-  cy.get('td:last-child').find('svg') // Select the last <td> element within the row
-    .click({force:true}); // Click the delete button
-    
-});
-cy.wait(2000);
-cy.contains('Edit').click();
-
-})
-    
-      
 })
