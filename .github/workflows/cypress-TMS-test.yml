@@ -1,0 +1,24 @@
+name: Cypress Tests
+
+on:
+  push:
+    branches:
+      - main  # Adjust branch names as needed
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Install Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'  # Adjust version as needed
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run Cypress Tests
+        run: npm run cypress:run  # Adjust command as needed
